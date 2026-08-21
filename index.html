@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>IronCoreForgings</title>
+
+<meta name="description" content="IronCoreForgings - Premium Indian forging and engineering solutions." />
+
+
+<link rel="icon" type="image/png" href="src/logoOnly.png" />
+
+<link rel="preconnect" href="https://images.pexels.com" />
+<link rel="preconnect" href="https://videos.pexels.com" crossorigin />
+    <style>
+:root {
+  --bg: #0a0b0e;
+  --bg-2: #121419;
+  --bg-3: #181b22;
+  --surface: #1c2028;
+  --border: #2a2f3a;
+  --text: #e8eaed;
+  --text-2: #a8aebc;
+  --text-3: #6b7280;
+  --accent: #f59e0b;
+  --accent-2: #ea580c;
+  --accent-3: #fbbf24;
+  --primary: #ef4444;
+  --secondary: #3b82f6;
+  --success: #22c55e;
+  --warning: #eab308;
+  --error: #ef4444;
+  --radius: 10px;
+  --radius-lg: 18px;
+  --maxw: 1200px;
+  --header-h: 76px;
+  --font: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-head: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --shadow: 0 10px 30px rgba(0,0,0,.5);
+  --shadow-2: 0 20px 60px rgba(0,0,0,.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-head);
+  line-height: 1.2;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+a { color: inherit; text-decoration: none; transition: color .2s ease; }
+a:hover { color: var(--accent-3); }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.section { padding: 96px 0; position: relative; }
+.section-sm { padding: 64px 0; }
+.section-title { font-size: clamp(28px, 4vw, 44px); margin-bottom: 18px; }
+.section-sub { color: var(--text-2); font-size: 18px; max-width: 760px; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: inline-block;
+}
+.lead { color: var(--text-2); font-size: 19px; line-height: 1.7; }
+#site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: rgba(10,11,14,.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  z-index: 1000;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+#site-header.scrolled {
+  background: rgba(10,11,14,.92);
+  border-bottom-color: var(--border);
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+}
+.header-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+.logo-mark {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #1a1206;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 8px;
+  letter-spacing: 0.05em;
+}
+.logo-text { font-size: 18px; }
+.main-nav { display: flex; align-items: center; gap: 8px; }
+.nav-group { position: relative; }
+.nav-parent {
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background .2s ease, color .2s ease;
+}
+.nav-parent::after {
+  content: "";
+  width: 6px; height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  opacity: .6;
+}
+.nav-parent:hover { background: var(--bg-3); color: var(--accent-3); }
+.nav-dropdown {
+  position: absolute;
+  top: 100%; right: 0;
+  min-width: 220px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px;
+  box-shadow: var(--shadow-2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .22s ease, transform .22s ease, visibility .22s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-group:hover .nav-dropdown,
+.nav-group:focus-within .nav-dropdown {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.nav-dropdown a {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+.nav-dropdown a:hover { background: var(--bg-3); color: #fff; }
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+}
+.menu-toggle span {
+  width: 24px; height: 2px;
+  background: #fff;
+  transition: transform .3s ease, opacity .2s ease;
+}
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s;
+  font-family: inherit;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #1a1206;
+  box-shadow: 0 8px 24px rgba(245,158,11,.25);
+}
+.btn-primary:hover { box-shadow: 0 12px 32px rgba(245,158,11,.4); }
+.btn-outline {
+  background: transparent;
+  border-color: var(--border);
+  color: #fff;
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent-3); }
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--header-h);
+  overflow: hidden;
+}
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #000;
+}
+.hero-video-bg video,
+.hero-video-bg .hero-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.hero-video-bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,11,14,.72) 0%, rgba(10,11,14,.55) 40%, rgba(10,11,14,.92) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+.hero h1 {
+  font-size: clamp(40px, 7vw, 84px);
+  line-height: 1.05;
+  margin-bottom: 22px;
+  max-width: 900px;
+}
+.hero h1 .grad {
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p { font-size: clamp(17px, 2vw, 21px); color: var(--text-2); max-width: 620px; margin-bottom: 34px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-stat-row {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  max-width: 860px;
+}
+.hero-stat .num {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-stat .lbl { color: var(--text-2); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+.scroll-cue {
+  position: absolute;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: var(--text-3);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: bob 2.4s ease-in-out infinite;
+}
+.scroll-cue .mouse {
+  width: 22px; height: 36px;
+  border: 2px solid var(--text-3);
+  border-radius: 12px;
+  position: relative;
+}
+.scroll-cue .mouse::after {
+  content: "";
+  position: absolute;
+  top: 6px; left: 50%;
+  width: 4px; height: 8px;
+  background: var(--text-3);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: wheel 2s ease-in-out infinite;
+}
+@keyframes wheel { 0%,100%{opacity:1;transform:translate(-50%,0)} 50%{opacity:.3;transform:translate(-50%,10px)} }
+@keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-6px)} }
+.page-hero {
+  padding: calc(var(--header-h) + 70px) 0 56px;
+  background:
+    radial-gradient(800px 400px at 20% 0%, rgba(245,158,11,.10), transparent 60%),
+    radial-gradient(600px 300px at 90% 10%, rgba(234,88,12,.08), transparent 60%),
+    var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero h1 { font-size: clamp(34px, 5vw, 56px); margin-bottom: 16px; }
+.breadcrumb { color: var(--text-3); font-size: 14px; margin-bottom: 18px; }
+.breadcrumb a:hover { color: var(--accent-3); }
+.grid { display: grid; gap: 24px; }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,.4); box-shadow: var(--shadow); }
+.card .card-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(245,158,11,.18), rgba(234,88,12,.12));
+  display: grid; place-items: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.card h3 { font-size: 22px; margin-bottom: 12px; }
+.card p { color: var(--text-2); }
+.stat-card { text-align: center; padding: 36px 24px; }
+.stat-card .num {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.stat-card .lbl { color: var(--text-2); margin-top: 12px; font-size: 15px; }
+.timeline {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  padding-left: 36px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+}
+.timeline-item { position: relative; padding-bottom: 40px; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -32px; top: 4px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(245,158,11,.18);
+}
+.timeline-item .year {
+  font-size: 22px; font-weight: 800; color: var(--accent-3);
+  margin-bottom: 6px;
+}
+.timeline-item h4 { font-size: 18px; margin-bottom: 8px; }
+.timeline-item p { color: var(--text-2); }
+.marquee-wrap {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.brand-chip {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  white-space: nowrap;
+  padding: 8px 4px;
+  transition: color .2s ease;
+}
+.brand-chip:hover { color: #fff; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.gallery img {
+  width: 100%; height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: transform .3s ease, filter .3s ease;
+}
+.gallery img:hover { transform: scale(1.03); filter: brightness(1.1); }
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.split img { border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.split.reverse .split-media { order: 2; }
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.check-list li { display: flex; gap: 12px; align-items: flex-start; color: var(--text-2); }
+.check-list li::before {
+  content: "\2713";
+  color: var(--accent);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.accordion-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.accordion-head {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.accordion-head .plus { font-size: 22px; color: var(--accent); transition: transform .3s ease; }
+.accordion-item.open .plus { transform: rotate(45deg); }
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+  color: var(--text-2);
+}
+.accordion-body-inner { padding: 0 24px 22px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-grid .full { grid-column: 1 / -1; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label { font-size: 14px; font-weight: 600; color: var(--text-2); }
+.field input, .field textarea, .field select {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 13px 16px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245,158,11,.18);
+}
+.field textarea { resize: vertical; min-height: 140px; }
+.form-note { color: var(--text-3); font-size: 13px; margin-top: 16px; }
+.form-success {
+  background: rgba(34,197,94,.12);
+  border: 1px solid rgba(34,197,94,.4);
+  color: #86efac;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+}
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: var(--bg-3); color: #fff; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; }
+td { color: var(--text-2); }
+tr:last-child td { border-bottom: 0; }
+tr:hover td { background: rgba(255,255,255,.02); }
+.cta-band {
+  background: linear-gradient(135deg, rgba(245,158,11,.12), rgba(234,88,12,.06));
+  border: 1px solid rgba(245,158,11,.25);
+  border-radius: var(--radius-lg);
+  padding: 56px;
+  text-align: center;
+}
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); margin-bottom: 14px; }
+.cta-band p { color: var(--text-2); max-width: 600px; margin: 0 auto 28px; }
+.person {
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.person:hover { transform: translateY(-4px); border-color: rgba(245,158,11,.4); }
+.person .avatar {
+  width: 112px; height: 112px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  background: linear-gradient(135deg, var(--bg-3), var(--bg-2));
+  border: 2px solid var(--border);
+  display: grid; place-items: center;
+  font-size: 38px; font-weight: 800; color: var(--accent-3);
+}
+.person h4 { font-size: 20px; margin-bottom: 4px; }
+.person .role { color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.person p { color: var(--text-2); font-size: 14px; }
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s;
+}
+.product-card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,.4); box-shadow: var(--shadow); }
+.product-card .pc-media { height: 200px; overflow: hidden; background: var(--bg-3); }
+.product-card .pc-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.product-card:hover .pc-media img { transform: scale(1.06); }
+.product-card .pc-body { padding: 24px; }
+.product-card h4 { font-size: 20px; margin-bottom: 10px; }
+.product-card p { color: var(--text-2); font-size: 14px; }
+.site-footer {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  padding-top: 72px;
+}
+.footer-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px 56px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1.3fr;
+  gap: 40px;
+}
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col h4 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; margin-bottom: 6px; }
+.footer-col a { color: var(--text-2); font-size: 14px; }
+.footer-col a:hover { color: var(--accent-3); }
+.footer-col p { color: var(--text-2); font-size: 14px; line-height: 1.6; }
+.footer-logo { margin-bottom: 10px; }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13px;
+}
+.toast {
+  position: fixed;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--surface);
+  border: 1px solid rgba(34,197,94,.5);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-2);
+  opacity: 0;
+  transition: opacity .3s ease, transform .3s ease;
+  z-index: 2000;
+  font-size: 14px;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.prose p { color: var(--text-2); margin-bottom: 16px; }
+.prose h3 { font-size: 22px; margin: 28px 0 12px; }
+.prose ul { color: var(--text-2); padding-left: 20px; margin-bottom: 16px; }
+#app { min-height: 60vh; }
+.page-enter { animation: pageIn .5s ease; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.active-link { color: var(--accent-3) !important; }
+@media (max-width: 980px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  .split { grid-template-columns: 1fr; gap: 32px; }
+  .split.reverse .split-media { order: 0; }
+  .hero-stat-row { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .menu-toggle { display: flex; }
+  .main-nav {
+    position: fixed;
+    top: var(--header-h); right: 0;
+    width: min(320px, 86vw);
+    height: calc(100vh - var(--header-h));
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px;
+    gap: 6px;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    overflow-y: auto;
+  }
+  .main-nav.open { transform: translateX(0); }
+  .nav-group { width: 100%; }
+  .nav-parent { width: 100%; justify-content: space-between; }
+  .nav-dropdown {
+    position: static;
+    opacity: 1; visibility: visible; transform: none;
+    box-shadow: none;
+    background: var(--bg-3);
+    border: 0;
+    padding: 6px 0 6px 12px;
+    display: none;
+  }
+  .nav-group.open .nav-dropdown { display: flex; }
+  .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .section { padding: 64px 0; }
+  .cta-band { padding: 36px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .marquee-track { animation: none; }
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.logo > span {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.logo > span span {
+    color: #f36b12;
+}
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-logo a {
+  display: inline-block;
+}
+
+.footer-logo-img {
+  width: 400px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+    </style>
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+  <body>
+    <header id="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="IronCoreForgings">
+    <img src="src/logoOnly.png" alt="IronCoreForgings">
+    <span>IRONCORE<span>FORGINGS</span></span>
+</a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Primary">
+          <div class="nav-group">
+            <button class="nav-parent" aria-haspopup="true" aria-expanded="false">Company</button>
+            <div class="nav-dropdown">
+              <a href="#/our-heritage">Our Heritage</a>
+              <a href="#/highlights">Highlights</a>
+              <a href="#/sustainability">Sustainability</a>
+              <a href="#/csr">CSR</a>
+            </div>
+          </div>
+          <div class="nav-group">
+            <button class="nav-parent" aria-haspopup="true" aria-expanded="false">Capabilities</button>
+            <div class="nav-dropdown">
+              <a href="#/products">Products</a>
+              <a href="#/capability">Capability</a>
+              <a href="#/technology">Technology</a>
+            </div>
+          </div>
+          <div class="nav-group">
+            <button class="nav-parent" aria-haspopup="true" aria-expanded="false">Others</button>
+            <div class="nav-dropdown">
+              <a href="#/contact-us">Contact Us</a>
+              <a href="#/privacy-statement">Privacy Statement</a>
+              <a href="#/terms-of-use">Terms of Use</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="app"></main>
+
+    <footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col footer-brand">
+
+      <div class="logo footer-logo">
+        <a href="index.html" aria-label="IronCoreForgings">
+          <img src="src/logoText.png" alt="IronCoreForgings" class="footer-logo-img" style="height: 100px; width: auto;">
+        </a>
+      </div>
+
+      <p>
+        Forged for strength. Engineered for tomorrow.
+        Delivering precision forged components from India to global industries.
+      </p>
+
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="about.html#heritage">Our Heritage</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="careers.html">Careers</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Capabilities</h4>
+      <a href="products.html">Products</a>
+      <a href="capabilities.html">Forging Capabilities</a>
+      <a href="capabilities.html">CNC Machining</a>
+      <a href="quality.html">Quality & Testing</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <a href="industries.html">Automotive</a>
+      <a href="industries.html">Railways</a>
+      <a href="industries.html">Agriculture</a>
+      <a href="industries.html">Construction</a>
+      <a href="industries.html">Oil & Gas</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Reach Us</h4>
+
+      <p>
+        <strong>Corporate Office</strong><br>
+        Industrial Estate,<br>
+        Pune, Maharashtra - 411019,<br>
+        India
+      </p>
+
+      <p>
+        <strong>Phone</strong><br>
+        +91 22 6854 8000
+      </p>
+
+      <p>
+        <strong>Email</strong><br>
+        ironcoreforgings.com
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      &copy; <span id="year"></span> IronCoreForgings. All Rights Reserved.
+    </p>
+
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+    <script>
+(function () {
+  "use strict";
+
+  var ASSETS = {
+    heroVideo: "https://videos.pexels.com/video-files/5846306/5846306-hd_1080_1920_25fps.mp4",
+    factoryIndia: "https://images.pexels.com/photos/18920790/pexels-photo-18920790.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    forgeWorker: "https://images.pexels.com/photos/30211159/pexels-photo-30211159.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    metalCasting: "https://images.pexels.com/photos/37800203/pexels-photo-37800203.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    grinding: "https://images.pexels.com/photos/36003964/pexels-photo-36003964.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    blacksmithHot: "https://images.pexels.com/photos/2880872/pexels-photo-2880872.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    gears: "https://images.pexels.com/photos/28752152/pexels-photo-28752152.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    engineAssembly: "https://images.pexels.com/photos/33559451/pexels-photo-33559451.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    connectingRod: "https://images.pexels.com/photos/33559565/pexels-photo-33559565.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    cylinderHead: "https://images.pexels.com/photos/33559313/pexels-photo-33559313.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    metalPart: "https://images.pexels.com/photos/6485909/pexels-photo-6485909.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    workshop: "https://images.pexels.com/photos/5845897/pexels-photo-5845897.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    furnaceWorkers: "https://images.pexels.com/photos/37574797/pexels-photo-37574797.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    pouringMetal: "https://images.pexels.com/photos/37363926/pexels-photo-37363926.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    beardedSmith: "https://images.pexels.com/photos/5845967/pexels-photo-5845967.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    moltenHands: "https://images.pexels.com/photos/33444785/pexels-photo-33444785.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    lathe: "https://images.pexels.com/photos/28752150/pexels-photo-28752150.jpeg?auto=compress&cs=tinysrgb&w=1400"
+  };
+
+  var BRANDS = ["ABB","Angstrom","Aludyne","Bosch","Brakes India","Continental","DANA","Festo","Fiat","GE","GKN","GM","Hyundai Wia","Iroquois","Mando","Neapco","Nexteer","Polaris","Raufoss","Saint-Jean","Stellantis","THK","ZF"];
+
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function toast(msg) {
+    var t = $(".toast");
+    if (!t) { t = el("div", "toast"); document.body.appendChild(t); }
+    t.textContent = msg;
+    requestAnimationFrame(function () { t.classList.add("show"); });
+    clearTimeout(t._tm);
+    t._tm = setTimeout(function () { t.classList.remove("show"); }, 3200);
+  }
+
+  function path() {
+    var h = location.hash.replace(/^#/, "");
+    return h || "/";
+  }
+
+  function render() {
+    var p = path();
+    var app = $("#app");
+    var fn = routes[p] || notFound;
+    app.classList.remove("page-enter");
+    void app.offsetWidth;
+    app.innerHTML = "";
+    fn(app);
+    app.classList.add("page-enter");
+    window.scrollTo({ top: 0, behavior: "auto" });
+    setActiveNav();
+    initReveal();
+    initAccordions();
+  }
+
+  function setActiveNav() {
+    var p = path();
+    $$(".nav-dropdown a, .footer-col a").forEach(function (a) {
+      var href = a.getAttribute("href").replace(/^#/, "");
+      a.classList.toggle("active-link", href === p);
+    });
+  }
+
+  window.addEventListener("hashchange", render);
+
+  function bindHeader() {
+    var header = $("#site-header");
+    function onScroll() { header.classList.toggle("scrolled", window.scrollY > 24); }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  function initReveal() {
+    var els = $$(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (e) { e.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  }
+
+  function initAccordions() {
+    $$(".accordion-head").forEach(function (head) {
+      head.onclick = function () {
+        var item = head.parentElement;
+        var body = head.nextElementSibling;
+        var open = item.classList.toggle("open");
+        body.style.maxHeight = open ? body.scrollHeight + "px" : "0";
+      };
+    });
+  }
+
+  function bindMobileNav() {
+    var toggle = $("#menu-toggle");
+    var nav = $("#main-nav");
+    toggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("open");
+      toggle.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", open);
+    });
+    $$(".nav-parent").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        if (window.innerWidth <= 760) {
+          e.stopPropagation();
+          btn.parentElement.classList.toggle("open");
+        }
+      });
+    });
+    $$(".nav-dropdown a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        nav.classList.remove("open");
+        toggle.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  function pageHero(title, sub, crumb) {
+    return '<section class="page-hero"><div class="container">' +
+      '<p class="breadcrumb"><a href="#/">Home</a> / ' + (crumb || title) + '</p>' +
+      '<h1>' + title + '</h1>' + (sub ? '<p class="section-sub">' + sub + '</p>' : '') +
+      '</div></section>';
+  }
+
+  function ctaBand(title, text) {
+    return '<section class="section-sm"><div class="container"><div class="cta-band reveal">' +
+      '<h2>' + title + '</h2><p>' + text + '</p>' +
+      '<a href="#/contact-us" class="btn btn-primary">Get in touch</a>' +
+      '</div></div></section>';
+  }
+
+  function brandMarquee() {
+    var chips = BRANDS.map(function (b) { return '<span class="brand-chip">' + b + '</span>'; }).join("");
+    var loop = chips + chips;
+    return '<section class="section-sm"><div class="container">' +
+      '<p class="eyebrow reveal" style="text-align:center;">Brands that Trust Us</p>' +
+      '<div class="marquee-wrap reveal"><div class="marquee-track">' + loop + '</div></div>' +
+      '</div></section>';
+  }
+
+  function home(root) {
+    root.innerHTML =
+      '<section class="hero">' +
+        '<div class="hero-video-bg">' +
+          '<video autoplay muted loop playsinline preload="auto" poster="' + ASSETS.blacksmithHot + '">' +
+            '<source src="' + ASSETS.heroVideo + '" type="video/mp4" />' +
+          '</video>' +
+        '</div>' +
+        '<div class="hero-content">' +
+          '<p class="eyebrow">Since 1974</p>' +
+          '<h1>Forging the <span class="grad">Future</span> Since 1974</h1>' +
+          '<p>IronCoreForgings Private Limited (ICF) has a rich historical legacy of almost five decades. Today, ICF proudly waves its flag as India\'s largest manufacturer of cold and warm forged components.</p>' +
+          '<div class="hero-actions">' +
+            '<a href="#/our-heritage" class="btn btn-primary">Know More</a>' +
+            '<a href="#/contact-us" class="btn btn-outline">Contact Us</a>' +
+          '</div>' +
+          '<div class="hero-stat-row">' +
+            '<div class="hero-stat reveal"><div class="num">50+</div><div class="lbl">Years of Excellence</div></div>' +
+            '<div class="hero-stat reveal"><div class="num">Top 3</div><div class="lbl">Global CV Joints Producer</div></div>' +
+            '<div class="hero-stat reveal"><div class="num">Rs.550Cr+</div><div class="lbl">Annual Sales</div></div>' +
+            '<div class="hero-stat reveal"><div class="num">100x</div><div class="lbl">Growth Since 1990s</div></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="scroll-cue"><span class="mouse"></span>Scroll</div>' +
+      '</section>' +
+      brandMarquee() +
+      '<section class="section"><div class="container">' +
+        '<p class="eyebrow reveal">ICF\'s Key Achievements</p>' +
+        '<h2 class="section-title reveal">Strengths That Set Us Apart</h2>' +
+        '<div class="grid grid-3" style="margin-top:40px;">' +
+          '<div class="card reveal"><div class="card-icon">\uD83C\uDFC6</div><h3>On the Global Podium</h3><p>IronCoreForgings ranks among the top 3 global players in terms of production in CV joints components and aluminum braking components.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83D\uDCC8</div><h3>Fast Paced Growth</h3><p>With a sales turnover of less than Rs.3 crores in the early 90s, IronCoreForgings has achieved 100-fold growth till 2017, crossing sales of Rs.550 crores per year.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83C\uDF0D</div><h3>10% on Other End</h3><p>Approximately 10% of ICF\'s sales come from the Non-Auto business, distributed in the USA &amp; Europe diversifying and strengthening the company\'s revenue streams.</p></div>' +
+        '</div>' +
+      '</div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container"><div class="split">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">Architects of Our Success</p>' +
+          '<h2 class="section-title reveal">Built on Decades of Dedication</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">From a modest cold forging enterprise in 1974 to one of India\'s most trusted component manufacturers, our journey is shaped by the people, principles and precision that define every part we produce.</p>' +
+          '<ul class="check-list reveal">' +
+            '<li>India\'s largest manufacturer of cold and warm forged components</li>' +
+            '<li>Debt-free &amp; asset rich for project and R&amp;D allocations</li>' +
+            '<li>Trusted by customers globally over decades</li>' +
+          '</ul>' +
+          
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.factoryIndia + '" alt="Industrial factory in Ahmedabad, India" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section"><div class="container">' +
+        '<p class="eyebrow reveal">Capabilities</p>' +
+        '<h2 class="section-title reveal">What We Forge</h2>' +
+        '<p class="section-sub reveal">Precision cold and warm forged components for automotive and industrial applications worldwide.</p>' +
+        '<div class="grid grid-3" style="margin-top:40px;">' +
+          '<div class="product-card reveal"><div class="pc-media"><img src="' + ASSETS.connectingRod + '" alt="Connecting rod" loading="lazy" /></div><div class="pc-body"><h4>CV Joint Components</h4><p>Among the top 3 global producers of constant-velocity joint components.</p></div></div>' +
+          '<div class="product-card reveal"><div class="pc-media"><img src="' + ASSETS.cylinderHead + '" alt="Aluminum braking components" loading="lazy" /></div><div class="pc-body"><h4>Aluminum Braking Components</h4><p>High-precision aluminum brake parts trusted by global OEMs.</p></div></div>' +
+          '<div class="product-card reveal"><div class="pc-media"><img src="' + ASSETS.gears + '" alt="Precision gears" loading="lazy" /></div><div class="pc-body"><h4>Precision Forged Gears</h4><p>Cold and warm forged gears engineered to exacting tolerances.</p></div></div>' +
+        '</div>' +
+        '<div style="text-align:center;margin-top:36px;"><a href="#/products" class="btn btn-primary reveal">View All Products</a></div>' +
+      '</div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container"><div class="split reverse">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">Future Projections</p>' +
+          '<h2 class="section-title reveal">Engineering What\'s Next</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">We continue to invest in technology, talent and sustainability to stay ahead of the curve \u2014 expanding capacity for electric mobility, lightweighting and global non-auto markets.</p>' +
+          '<ul class="check-list reveal">' +
+            '<li>Capacity expansion for EV component platforms</li>' +
+            '<li>Advanced warm forging lines for lightweight alloys</li>' +
+            '<li>Growing non-auto footprint across USA &amp; Europe</li>' +
+          '</ul>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.grinding + '" alt="Worker grinding metal with sparks" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section"><div class="container">' +
+        '<p class="eyebrow reveal" style="text-align:center;">Certifications &amp; Recognition</p>' +
+        '<h2 class="section-title reveal" style="text-align:center;">Quality, Trusted Worldwide</h2>' +
+        '<div class="grid grid-4" style="margin-top:40px;">' +
+          '<div class="stat-card card reveal"><div class="num">IATF</div><div class="lbl">16949 Certified</div></div>' +
+          '<div class="stat-card card reveal"><div class="num">ISO</div><div class="lbl">9001 : 2015</div></div>' +
+          '<div class="stat-card card reveal"><div class="num">ISO</div><div class="lbl">14001 Environmental</div></div>' +
+          '<div class="stat-card card reveal"><div class="num">OHSAS</div><div class="lbl">18001 Safety</div></div>' +
+        '</div>' +
+      '</div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container">' +
+        '<p class="eyebrow reveal">Awards &amp; Recognition</p>' +
+        '<h2 class="section-title reveal">Celebrated by the Industry</h2>' +
+        '<div class="grid grid-3" style="margin-top:40px;">' +
+          '<div class="card reveal"><h3>Top Export Award</h3><p>Recognized for outstanding export performance in forged components.</p></div>' +
+          '<div class="card reveal"><h3>Quality Excellence</h3><p>Awarded by leading OEMs for consistent zero-defect deliveries.</p></div>' +
+          '<div class="card reveal"><h3>Innovation in Forging</h3><p>Honored for advances in warm forging and lightweight alloy processing.</p></div>' +
+        '</div>' +
+      '</div></section>' +
+      '<section class="section"><div class="container">' +
+        '<p class="eyebrow reveal">Media Words About Us</p>' +
+        '<h2 class="section-title reveal">In the News</h2>' +
+        '<div class="grid grid-3" style="margin-top:40px;">' +
+          '<div class="card reveal"><h3>Forging Ahead</h3><p>How a Chennai-based forge grew into a global top-3 player. \u2014 Industry Daily</p></div>' +
+          '<div class="card reveal"><h3>The Warm Forge Revolution</h3><p>ICF\'s investment in warm forging reshapes component economics. \u2014 AutoTech Review</p></div>' +
+          '<div class="card reveal"><h3>Beyond Automotive</h3><p>Diversifying into non-auto markets across the USA and Europe. \u2014 Manufacturing Today</p></div>' +
+        '</div>' +
+      '</div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container"><div class="split">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">Sustainability</p>' +
+          '<h2 class="section-title reveal">Forging a Greener Future</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">We integrate environmental responsibility into every stage of production \u2014 from energy-efficient forging lines to waste-metal recovery and water recycling.</p>' +
+          '<a href="#/sustainability" class="btn btn-outline reveal">Our Sustainability Initiatives</a>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.furnaceWorkers + '" alt="Foundry workers at furnace" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section"><div class="container"><div class="split reverse">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">CSR Activities</p>' +
+          '<h2 class="section-title reveal">Giving Back to the Community</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">Education, skill development and healthcare initiatives around our manufacturing hubs empower the communities that have powered our growth.</p>' +
+          '<a href="#/csr" class="btn btn-outline reveal">Our CSR Initiatives</a>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.metalCasting + '" alt="Workers pouring molten metal" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section"><div class="container">' +
+        '<p class="eyebrow reveal" style="text-align:center;">Trusted by Customers Globally Over Decades</p>' +
+        '<h2 class="section-title reveal" style="text-align:center;">Our Global Partners</h2>' +
+        '<div class="gallery reveal" style="margin-top:40px;">' +
+          '<img src="' + ASSETS.workshop + '" alt="Workshop forging" loading="lazy" />' +
+          '<img src="' + ASSETS.forgeWorker + '" alt="Welder at work in India" loading="lazy" />' +
+          '<img src="' + ASSETS.pouringMetal + '" alt="Pouring molten metal" loading="lazy" />' +
+          '<img src="' + ASSETS.engineAssembly + '" alt="Engine assembly" loading="lazy" />' +
+          '<img src="' + ASSETS.moltenHands + '" alt="Hands working molten metal" loading="lazy" />' +
+        '</div>' +
+      '</div></section>' 
+  }
+
+  function ourHeritage(root) {
+    root.innerHTML =
+      pageHero("Our Heritage", "Five decades of forging excellence \u2014 from a cold forging enterprise in 1974 to a global top-3 component manufacturer.", "Company / Our Heritage") +
+      '<section class="section"><div class="container"><div class="split">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">1974</p>' +
+          '<h2 class="section-title reveal">Started as a Cold Forging Enterprise</h2>' +
+          '<p class="lead reveal" style="margin:18px 0;">IronCoreForgings Private Limited (ICF) began its journey in 1974 as a cold forging enterprise. Since then, we have achieved steady growth, making us one of the most successful component manufacturers in India.</p>' +
+          '<p class="lead reveal">Today,IronCoreForgings proudly waves its flag as India\'s largest manufacturer of cold and warm forged components.</p>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.blacksmithHot + '" alt="Hot metal forging" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container">' +
+        '<p class="eyebrow reveal">Milestones</p>' +
+        '<h2 class="section-title reveal" style="text-align:center;">Our Journey</h2>' +
+        '<div class="timeline" style="margin-top:48px;">' +
+          '<div class="timeline-item reveal"><div class="year">1974</div><h4>The Beginning</h4><p>Founded as a cold forging enterprise in Chennai, India.</p></div>' +
+          '<div class="timeline-item reveal"><div class="year">1980s</div><h4>Steady Growth</h4><p>Expanded capacity and customer base across Indian automotive OEMs.</p></div>' +
+          '<div class="timeline-item reveal"><div class="year">1990s</div><h4>Early Scale</h4><p>Sales turnover crossed Rs.3 crores, laying the foundation for rapid expansion.</p></div>' +
+          '<div class="timeline-item reveal"><div class="year">2000s</div><h4>Global Footprint</h4><p>Entered non-auto markets in the USA and Europe; diversified product portfolio.</p></div>' +
+          '<div class="timeline-item reveal"><div class="year">2017</div><h4>100x Growth</h4><p>Achieved 100-fold growth from the early 90s, crossing Rs.550 crores in annual sales.</p></div>' +
+          '<div class="timeline-item reveal"><div class="year">Today</div><h4>Global Top 3</h4><p>Among the top 3 global players in CV joint and aluminum braking components.</p></div>' +
+        '</div>' +
+      '</div></section>'
+  }
+
+  function leadership(root) {
+    var people = [
+      ["VS","V. Suresh","Managing Director","Three decades steering ICF's growth into a global top-3 forged components manufacturer."],
+      ["RK","R. Krishnan","Director - Operations","Leads manufacturing excellence across our forging and machining facilities."],
+      ["AM","A. Menon","Director - Technology","Drives process innovation in cold, warm and near-net-shape forging."],
+      ["SP","S. Pillai","Chief Financial Officer","Steers the debt-free, asset-rich financial strategy powering ICF's expansion."],
+      ["NG","N. Gupta","VP - Global Sales","Manages relationships with OEMs across India, USA and Europe."],
+      ["TR","T. Raman","VP - Quality","Guardian of the zero-defect culture trusted by global customers."]
+    ];
+    var cards = people.map(function (p) {
+      return '<div class="person reveal"><div class="avatar">' + p[0] + '</div><h4>' + p[1] + '</div><div class="role">' + p[2] + '</div><p>' + p[3] + '</p></div>';
+    }).join("");
+    root.innerHTML =
+      pageHero("Leadership", "The architects of our success \u2014 guiding ICF with vision, integrity and engineering excellence.", "Company / Leadership") +
+      '<section class="section"><div class="container">' +
+        '<p class="eyebrow reveal">Architects of Our Success</p>' +
+        '<h2 class="section-title reveal">Meet the Leadership</h2>' +
+        '<div class="grid grid-3" style="margin-top:40px;">' + cards + '</div>' +
+      '</div></section>' 
+     
+  }
+
+  function highlights(root) {
+    root.innerHTML =
+      pageHero("Highlights", "Key achievements that define ICF's position on the global stage.", "Company / Highlights") +
+      '<section class="section"><div class="container">' +
+        '<div class="grid grid-4" style="margin-bottom:48px;">' +
+          '<div class="stat-card card reveal"><div class="num">50+</div><div class="lbl">Years of Forging Excellence</div></div>' +
+          '<div class="stat-card card reveal"><div class="num">Top 3</div><div class="lbl">Global CV Joints Producer</div></div>' +
+          '<div class="stat-card card reveal"><div class="num">Rs.550Cr+</div><div class="lbl">Annual Sales Turnover</div></div>' +
+          '<div class="stat-card card reveal"><div class="num">100x</div><div class="lbl">Growth Since the 1990s</div></div>' +
+        '</div>' +
+        '<div class="grid grid-3">' +
+          '<div class="card reveal"><div class="card-icon">\uD83C\uDFC6</div><h3>On the Global Podium</h3><p>Ranks among the top 3 global players in production of CV joints components and aluminum braking components.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83D\uDCC8</div><h3>Fast Paced Growth</h3><p>From less than Rs.3 crores in the early 90s to over Rs.550 crores per year \u2014 a 100-fold increase by 2017.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83C\uDF0D</div><h3>10% on Other End</h3><p>~10% of sales come from the Non-Auto business, distributed across the USA &amp; Europe.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83D\uDCB0</div><h3>Debt Free &amp; Asset Rich</h3><p>A strong balance sheet enables sustained investment in projects and R&amp;D.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83E\uDD1D</div><h3>Globally Trusted</h3><p>Trusted by customers globally over decades \u2014 from global OEMs to specialized industrial players.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83C\uDFED</div><h3>India\'s Largest</h3><p>India\'s largest manufacturer of cold and warm forged components.</p></div>' +
+        '</div>' +
+      '</div></section>' 
+     
+  }
+
+  function sustainability(root) {
+    root.innerHTML =
+      pageHero("Sustainability", "Engineering components with responsibility toward people and the planet.", "Company / Sustainability") +
+      '<section class="section"><div class="container"><div class="split">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">Our Commitment</p>' +
+          '<h2 class="section-title reveal">Forging a Greener Future</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">We integrate environmental responsibility into every stage of production \u2014 from energy-efficient forging lines to waste-metal recovery and water recycling. Sustainability is not an add-on; it\'s built into how we operate.</p>' +
+          '<ul class="check-list reveal">' +
+            '<li>Energy-efficient forging and heat-treatment lines</li>' +
+            '<li>Comprehensive scrap-metal recovery and recycling</li>' +
+            '<li>Water conservation and closed-loop recycling systems</li>' +
+            '<li>ISO 14001 certified environmental management</li>' +
+          '</ul>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.furnaceWorkers + '" alt="Foundry workers at a furnace" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container"><div class="grid grid-3">' +
+        '<div class="card reveal"><div class="card-icon">\u26A1</div><h3>Energy Efficiency</h3><p>Continuous investment in lower-energy forging and induction heating technologies.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\u267B\uFE0F</div><h3>Material Recovery</h3><p>Forging scrap is recovered and recycled back into the production cycle.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\uD83D\uDCA7</div><h3>Water Stewardship</h3><p>Closed-loop water systems minimize freshwater consumption across plants.</p></div>' +
+      '</div></div></section>' 
+      
+  }
+
+  function csr(root) {
+    root.innerHTML =
+      pageHero("CSR Activities", "Empowering the communities that have powered our growth.", "Company / CSR") +
+      '<section class="section"><div class="container"><div class="split reverse">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">Giving Back</p>' +
+          '<h2 class="section-title reveal">Community at the Core</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">Our corporate social responsibility initiatives focus on education, skill development and healthcare in the communities around our manufacturing hubs \u2014 creating lasting, measurable impact.</p>' +
+          '<ul class="check-list reveal">' +
+            '<li>Skill-development training for young engineers and technicians</li>' +
+            '<li>School infrastructure and scholarship programs</li>' +
+            '<li>Primary health camps in nearby industrial neighborhoods</li>' +
+            '<li>Women\'s empowerment and vocational training initiatives</li>' +
+          '</ul>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.metalCasting + '" alt="Workers in a metal casting workshop" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container"><div class="grid grid-3">' +
+        '<div class="card reveal"><div class="card-icon">\uD83C\uDF93</div><h3>Education</h3><p>Scholarships and infrastructure support for schools near our facilities.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\uD83D\uDEE0\uFE0F</div><h3>Skill Development</h3><p>Hands-on training programs preparing the next generation of forging technicians.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\u2764\uFE0F</div><h3>Healthcare</h3><p>Regular health camps and support for local medical facilities.</p></div>' +
+      '</div></div></section>' 
+      
+  }
+
+  function careers(root) {
+    root.innerHTML =
+      pageHero("Careers", "Build your future with India's largest forged components manufacturer.", "Company / Careers") +
+      '<section class="section"><div class="container"><div class="split">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">Join ICF</p>' +
+          '<h2 class="section-title reveal">Forge Your Career With Us</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">We are always looking for passionate engineers, technicians and professionals who take pride in precision. At SAF you\'ll work alongside some of the best minds in Indian forging, with real opportunities to grow.</p>' +
+          '<a href="#/contact-us" class="btn btn-primary reveal">Send Your Resume</a>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.beardedSmith + '" alt="Skilled worker in a workshop" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container">' +
+        '<p class="eyebrow reveal">Open Positions</p>' +
+        '<h2 class="section-title reveal">Current Openings</h2>' +
+        '<div class="grid grid-2" style="margin-top:40px;">' +
+          '<div class="card reveal"><h3>Forging Process Engineer</h3><p>Chennai \u2014 5+ yrs in cold/warm forging. Lead process optimization across lines.</p></div>' +
+          '<div class="card reveal"><h3>Quality Engineer</h3><p>Chennai \u2014 3+ yrs in automotive QA. IATF 16949 experience preferred.</p></div>' +
+          '<div class="card reveal"><h3>Tool &amp; Die Designer</h3><p>Chennai \u2014 4+ yrs in die design for forging. SolidWorks / AutoCAD.</p></div>' +
+          '<div class="card reveal"><h3>Maintenance Technician</h3><p>Ambattur \u2014 3+ yrs maintaining forging presses and induction lines.</p></div>' +
+        '</div>' +
+      '</div></section>' 
+      
+  }
+
+  function products(root) {
+    var items = [
+      [ASSETS.connectingRod, "CV Joint Components", "Inner races, outer races and cages for constant-velocity joints \u2014 produced at a global top-3 scale."],
+      [ASSETS.cylinderHead, "Aluminum Braking Components", "High-precision aluminum brake parts engineered to global OEM standards."],
+      [ASSETS.gears, "Precision Forged Gears", "Cold and warm forged gears manufactured to exacting tolerances for transmission systems."],
+      [ASSETS.engineAssembly, "Engine Components", "Near-net-shape forged engine parts that reduce machining and material waste."],
+      [ASSETS.metalPart, "Shafts & Yokes", "Propeller shafts, yokes and splined components for driveline assemblies."],
+      [ASSETS.lathe, "Machined Sub-assemblies", "Fully machined and ready-to-assemble components delivered to the line."]
+    ];
+    var cards = items.map(function (it) {
+      return '<div class="product-card reveal"><div class="pc-media"><img src="' + it[0] + '" alt="' + it[1] + '" loading="lazy" /></div><div class="pc-body"><h4>' + it[1] + '</h4><p>' + it[2] + '</p></div></div>';
+    }).join("");
+    root.innerHTML =
+      pageHero("Products", "Precision cold and warm forged components for automotive and industrial applications worldwide.", "Capabilities / Products") +
+      '<section class="section"><div class="container"><div class="grid grid-3">' + cards + '</div></div></section>' 
+      
+  }
+
+  function capability(root) {
+    root.innerHTML =
+      pageHero("Capability", "End-to-end forging, machining and assembly capability under one roof.", "Capabilities / Capability") +
+      '<section class="section"><div class="container"><div class="grid grid-3">' +
+        '<div class="card reveal"><div class="card-icon">\uD83D\uDD28</div><h3>Cold Forging</h3><p>High-volume, near-net-shape cold forging for automotive and industrial components.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\uD83D\uDD25</div><h3>Warm Forging</h3><p>Advanced warm forging lines for complex geometries and high-strength alloys.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\u2699\uFE0F</div><h3>Precision Machining</h3><p>CNC turning, grinding and drilling to deliver ready-to-assemble parts.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\uD83D\uDD0D</div><h3>Quality Lab</h3><p>Metallurgical testing, CMM inspection and full dimensional verification.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\uD83D\uDEE0\uFE0F</div><h3>Tool &amp; Die</h3><p>In-house tool and die design and maintenance for rapid iteration.</p></div>' +
+        '<div class="card reveal"><div class="card-icon">\uD83D\uDCE6</div><h3>Sub-assembly</h3><p>Assembly and kitting services that deliver complete sub-assemblies to the line.</p></div>' +
+      '</div></div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container">' +
+        '<p class="eyebrow reveal">Capacity at a Glance</p>' +
+        '<h2 class="section-title reveal">Production Footprint</h2>' +
+        '<div class="table-wrap reveal" style="margin-top:32px;"><table><thead><tr><th>Facility</th><th>Process</th><th>Focus</th></tr></thead><tbody>' +
+          '<tr><td>Ambattur, Chennai</td><td>Cold &amp; Warm Forging</td><td>High-volume automotive components</td></tr>' +
+          '<tr><td>Ekkattuthangal, Chennai</td><td>Corporate &amp; R&amp;D</td><td>Engineering, design and program management</td></tr>' +
+          '<tr><td>Chennai cluster</td><td>Machining &amp; Assembly</td><td>Ready-to-assemble sub-components</td></tr>' +
+        '</tbody></table></div>' +
+      '</div></section>' 
+     
+  }
+
+  function technology(root) {
+    root.innerHTML =
+      pageHero("Technology", "Investing continuously in forging, machining and inspection technology.", "Capabilities / Technology") +
+      '<section class="section"><div class="container"><div class="split">' +
+        '<div class="split-text">' +
+          '<p class="eyebrow reveal">Process Innovation</p>' +
+          '<h2 class="section-title reveal">Engineering Better Forging</h2>' +
+          '<p class="lead reveal" style="margin:18px 0 24px;">Our technology investments span simulation-driven die design, induction heating, servo forging presses and in-line inspection \u2014 all aimed at lighter, stronger and more cost-efficient components.</p>' +
+          '<ul class="check-list reveal">' +
+            '<li>Finite-element simulation for die and process design</li>' +
+            '<li>Servo and mechanical forging presses up to 1,600 tons</li>' +
+            '<li>Induction heating for precise warm-forging temperatures</li>' +
+            '<li>In-line vision and CMM inspection for zero-defect delivery</li>' +
+          '</ul>' +
+        '</div>' +
+        '<div class="split-media reveal"><img src="' + ASSETS.grinding + '" alt="Metal grinding with sparks" loading="lazy" /></div>' +
+      '</div></div></section>' +
+      '<section class="section" style="background:var(--bg-2);"><div class="container">' +
+        '<p class="eyebrow reveal">R&amp;D</p>' +
+        '<h2 class="section-title reveal" style="text-align:center;">Research &amp; Development</h2>' +
+        '<div class="grid grid-3" style="margin-top:40px;">' +
+          '<div class="card reveal"><div class="card-icon">\uD83E\uDDEA</div><h3>Material Science</h3><p>Developing forging parameters for advanced high-strength and lightweight alloys.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83D\uDCBB</div><h3>Simulation</h3><p>FEA-based process simulation reduces tooling iterations and time-to-market.</p></div>' +
+          '<div class="card reveal"><div class="card-icon">\uD83D\uDD27</div><h3>Tooling</h3><p>In-house die design, manufacture and refurbishment for rapid development.</p></div>' +
+        '</div>' +
+      '</div></section>' 
+      
+  }
+
+  function contactUs(root) {
+    root.innerHTML =
+      pageHero("Contact Us", "Get in touch with our team \u2014 we'd love to hear from you.", "Others / Contact Us") +
+      '<section class="section"><div class="container"><div class="grid grid-2" style="align-items:start;">' +
+        '<div class="reveal">' +
+          '<h2 class="section-title" style="font-size:30px;">Send a Message</h2>' +
+          '<form id="contact-form" novalidate>' +
+            '<div class="form-grid">' +
+              '<div class="field"><label for="name">Full Name</label><input id="name" name="name" type="text" required /></div>' +
+              '<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>' +
+              '<div class="field"><label for="company">Company</label><input id="company" name="company" type="text" /></div>' +
+              '<div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" /></div>' +
+              '<div class="field full"><label for="subject">Subject</label><input id="subject" name="subject" type="text" required /></div>' +
+              '<div class="field full"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>' +
+            '</div>' +
+            '<button type="submit" class="btn btn-primary" style="margin-top:24px;">Send Message</button>' +
+            '<p class="form-note">We typically respond within two business days.</p>' +
+          '</form>' +
+        '</div>' +
+        '<div class="reveal">' +
+          '<h2 class="section-title" style="font-size:30px;">Reach Us</h2>' +
+          '<div class="card" style="margin-bottom:20px;"><h3>Registered Office</h3><p>No. 23, SIDCO Industrial Estate, Ambattur,<br />Chennai - 600058, Tamil Nadu, India</p></div>' +
+          '<div class="card" style="margin-bottom:20px;"><h3>Corporate Office</h3><p>TS 82/2, Mettu Street, Ganapathy Nagar,<br />Ekkattuthangal, Chennai - 600097, Tamil Nadu, India</p></div>' +
+          '<div class="card"><h3>General Enquiries</h3><p>Email: IronCoreForgings.com <br />Phone: +91 44 4xxx xxxx</p></div>' +
+        '</div>' +
+      '</div></div></section>';
+
+    var form = $("#contact-form", root);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var req = ["name", "email", "subject", "message"];
+      var ok = true;
+      req.forEach(function (id) {
+        var f = $("#" + id, root);
+        if (!f.value.trim()) { ok = false; f.style.borderColor = "var(--error)"; }
+        else f.style.borderColor = "";
+      });
+      if (!ok) { toast("Please fill in the required fields."); return; }
+      var ok2 = el("div", "form-success", "Thank you \u2014 your message has been sent. We'll be in touch shortly.");
+      form.prepend(ok2);
+      form.reset();
+      toast("Message sent successfully.");
+      ok2.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(function () { ok2.remove(); }, 6000);
+    });
+  }
+
+  function privacyStatement(root) {
+    root.innerHTML =
+      pageHero("Privacy Statement", "How IronCoreForgings handles information you share with us.", "Others / Privacy Statement") +
+      '<section class="section"><div class="container prose" style="max-width:820px;">' +
+        '<p class="reveal">IronCoreForgings Private Limited ("ICF", "we", "us") respects your privacy and is committed to protecting your personal data. This privacy statement explains how we collect, use and safeguard information you provide through this website.</p>' +
+        '<h3 class="reveal">Information We Collect</h3>' +
+        '<p class="reveal">We collect information you voluntarily provide \u2014 such as your name, email address, company and phone number \u2014 when you submit a contact form or inquiry. We may also collect non-personal analytics data about site usage.</p>' +
+        '<h3 class="reveal">How We Use Information</h3>' +
+        '<ul class="reveal"><li>To respond to your inquiries and provide requested information</li><li>To communicate about products, services and opportunities</li><li>To improve our website and user experience</li></ul>' +
+        '<h3 class="reveal">Data Sharing</h3>' +
+        '<p class="reveal">We do not sell or rent your personal information. We may share data with trusted service providers who assist our operations, under appropriate confidentiality obligations.</p>' +
+        '<h3 class="reveal">Data Security</h3>' +
+        '<p class="reveal">We apply reasonable technical and organizational measures to protect your information against unauthorized access, alteration or disclosure.</p>' +
+        '<h3 class="reveal">Contact</h3>' +
+        '<p class="reveal">For any privacy-related questions, please contact us at <a href="#/contact-us">our contact page</a>.</p>' +
+      '</div></section>';
+  }
+
+  function termsOfUse(root) {
+    root.innerHTML =
+      pageHero("Terms of Use", "The terms governing use of this website.", "Others / Terms of Use") +
+      '<section class="section"><div class="container prose" style="max-width:820px;">' +
+        '<p class="reveal">By accessing and using this website, you accept and agree to be bound by these Terms of Use. If you do not agree, please discontinue use of the site.</p>' +
+        '<h3 class="reveal">Use of Content</h3>' +
+        '<p class="reveal">All content on this site \u2014 including text, graphics, logos and images \u2014 is the property of IronCoreForgings Private Limited and may not be reproduced without prior written consent, except for personal, non-commercial use.</p>' +
+        '<h3 class="reveal">Trademarks</h3>' +
+        '<p class="reveal">The IronCoreForgings name and logo are trademarks of ICF. Other brand names referenced belong to their respective owners and are used for reference only.</p>' +
+        '<h3 class="reveal">No Warranty</h3>' +
+        '<p class="reveal">Information on this site is provided "as is" without warranties of any kind. ICF does not guarantee the accuracy or completeness of any content.</p>' +
+        '<h3 class="reveal">Limitation of Liability</h3>' +
+        '<p class="reveal">To the fullest extent permitted by law, ICF shall not be liable for any direct, indirect or consequential damages arising from the use of this website.</p>' +
+        '<h3 class="reveal">Changes</h3>' +
+        '<p class="reveal">We may update these terms at any time. Continued use of the site constitutes acceptance of the updated terms.</p>' +
+      '</div></section>';
+  }
+
+  function notFound(root) {
+    root.innerHTML =
+      pageHero("Page Not Found", "The page you're looking for doesn't exist.", "") +
+      '<section class="section"><div class="container" style="text-align:center;">' +
+        '<p class="lead reveal" style="margin-bottom:28px;">Try heading back to the home page or use the menu to find what you need.</p>' +
+        '<a href="#/" class="btn btn-primary reveal">Back to Home</a>' +
+      '</div></section>';
+  }
+
+  var routes = {
+    "/": home,
+    "/our-heritage": ourHeritage,
+    "/leadership": leadership,
+    "/highlights": highlights,
+    "/sustainability": sustainability,
+    "/csr": csr,
+    "/careers": careers,
+    "/products": products,
+    "/capability": capability,
+    "/technology": technology,
+    "/contact-us": contactUs,
+    "/privacy-statement": privacyStatement,
+    "/terms-of-use": termsOfUse
+  };
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  bindHeader();
+  bindMobileNav();
+  render();
+})();
+    </script>
+  </body>
+</html>
